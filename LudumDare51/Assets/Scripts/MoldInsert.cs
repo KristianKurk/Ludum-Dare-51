@@ -38,8 +38,8 @@ public class MoldInsert : MonoBehaviour, InteractableItem
     }
 
     private void SetCurrentMoldToOrderInHand() {
-        PlayerInteract.Instance.OrderInHand.transform.parent = transform;
-        PlayerInteract.Instance.OrderInHand.transform.localPosition = Vector3.zero;
+        PlayerInteract.Instance.OrderInHand.transform.parent = null;
+        PlayerInteract.Instance.OrderInHand.transform.position = transform.position;
         PlayerInteract.Instance.OrderInHand.transform.rotation = Quaternion.identity;
     }
 }

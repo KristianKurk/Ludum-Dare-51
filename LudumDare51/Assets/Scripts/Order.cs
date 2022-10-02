@@ -25,7 +25,7 @@ public class Order : MonoBehaviour
 
     public bool IsEmpty() => (_base == 0 && _neck == 0 && _material == 0);
     public bool IsMold() => (_base != 0 && _neck == 0 && _material == 0);
-    public bool IsIngot() => (_base == 0 && _neck == 0 && _material != 0);
+    public bool IsMaterial() => (_base == 0 && _neck == 0 && _material != 0);
     public bool IsNeck() => (_base == 0 && _neck != 0 && _material == 0);
     public bool IsCompleteItem() => (_base != 0 && _neck != 0 && _material != 0);
 
