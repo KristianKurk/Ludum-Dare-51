@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour, InteractableItem
 {
-    [SerializeField] private int cost;
+    [SerializeField] private bool hasCost;
     [SerializeField] private Material visualMaterial;
     [SerializeField] private Order.MaterialType materialType;
     [SerializeField] private Order.NeckType neckType;
@@ -18,11 +18,15 @@ public class ItemSpawner : MonoBehaviour, InteractableItem
         if (materialType != 0)
             newItem.Material = materialType;
 
+
         if (neckType != 0)
             newItem.Neck = neckType;
 
         if (visualMaterial != null)
             newItem.GetComponent<Renderer>().material = visualMaterial;
+
+        if (hasCost)
+            GameManager.SpendMoney(newItem.GetCost());
 
         PlayerInteract.Instance.GrabItem(newItem.GetComponent<Order>(), Vector3.zero);
 

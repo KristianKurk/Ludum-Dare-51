@@ -65,12 +65,7 @@ public class Order : MonoBehaviour
         return $"Order: {Base} made with {Material}, and {Neck}";
     }
 
-    public override bool Equals(object other)
-    {
-        //if (other.GetType() != typeof(Order)) return false;
-
-        Order o = other as Order;
-
-        return (Base == o.Base && Neck == o.Neck && Material == o.Material);
+    public int GetCost() {
+        return (10 * (int)Material) + (5 * (int)Base) + (5 * (int)Neck);
     }
 }

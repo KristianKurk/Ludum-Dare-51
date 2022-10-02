@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,11 +16,14 @@ public class GameManager : MonoBehaviour
     private float timer;
 
     private Queue<Customer> customers;
+    private static int money;
+    [SerializeField] private TMP_Text _moneyUI;
 
     void Start()
     {
         timer = 0f;
         customers = new Queue<Customer>();
+        money = 100;
     }
 
     private void OnEnable()
@@ -39,6 +43,12 @@ public class GameManager : MonoBehaviour
             timer -= 10;
             _tenSecondsPassed.Invoke();
         }
+        _moneyUI.text = money.ToString();
+    }
+
+    public static void SpendMoney(int cost)
+    {
+        money -= cost;
     }
 
     private void SpawnCustomer()
@@ -71,10 +81,21 @@ public class GameManager : MonoBehaviour
                 && PlayerInteract.Instance.OrderInHand.Neck == c.order.Neck
                 && PlayerInteract.Instance.OrderInHand.Base == c.order.Base)
             {
+                switch (c.status)
+                {
+                    case Customer.Status.Happy:
+                        money += 2 * PlayerInteract.Instance.OrderInHand.GetCost();
+                        break;
+                    case Customer.Status.Neutral:
+                        money += (int)(1.5 * PlayerInteract.Instance.OrderInHand.GetCost());
+                        break;
+                    case Customer.Status.Angry:
+                        money += 1 * PlayerInteract.Instance.OrderInHand.GetCost();
+                        break;
+                }
+
                 Destroy(PlayerInteract.Instance.OrderInHand.gameObject);
                 PlayerInteract.Instance.OrderInHand = null;
-
-                Debug.Log("SUCCESSFUL ORDER");
             }
         }
     }

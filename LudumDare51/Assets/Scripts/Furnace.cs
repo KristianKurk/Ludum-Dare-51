@@ -38,7 +38,10 @@ public class Furnace : MonoBehaviour, InteractableItem
         }
 
         if (isAnyCookin)
+        {
             _hearth.SetActive(true);
+            this.transform.localRotation = Quaternion.Euler(-120,0,0);
+        }
     }
 
     void Start()
@@ -81,6 +84,7 @@ public class Furnace : MonoBehaviour, InteractableItem
                 }
                 timer = 0f;
                 isAnyCookin = false;
+                this.transform.localRotation = Quaternion.Euler(-40, 0, 0);
                 _hearth.SetActive(false);
             }
         }
