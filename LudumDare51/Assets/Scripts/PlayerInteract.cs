@@ -5,11 +5,28 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    public static PlayerInteract Instance { get { return _instance; } }
+    private static PlayerInteract _instance;
+
+    public Order OrderInHand => _orderInHand;
+
     [SerializeField] private Transform _itemInHandPosition;
+
     private Order _orderInHand;
     private Camera _cam;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     void Start()
     {
         _cam = Camera.main;
@@ -26,8 +43,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 Order order = target as Order;
 
-                TryThrowItemInHand(ray.direction);
-                GrabItem(order);
+                GrabItem(order, ray.direction);
 
             }
             else if (hit.collider.gameObject.TryGetComponent(typeof(InteractableItem), out target))
@@ -61,8 +77,9 @@ public class PlayerInteract : MonoBehaviour
         _orderInHand = null;
     }
 
-    private void GrabItem(Order order)
+    public void GrabItem(Order order, Vector3 direction)
     {
+        TryThrowItemInHand(direction);
         _orderInHand = order;
 
         Rigidbody rb = _orderInHand.gameObject.GetComponent<Rigidbody>();
@@ -72,7 +89,6 @@ public class PlayerInteract : MonoBehaviour
         order.transform.localPosition = Vector3.zero;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
