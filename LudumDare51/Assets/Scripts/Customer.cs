@@ -11,7 +11,7 @@ public class Customer : MonoBehaviour
 
     public Vector3 targetPos;
 
-    void Start()
+    void Awake()
     {
         order = gameObject.AddComponent<Order>();
         order.GenerateRandomOrder();

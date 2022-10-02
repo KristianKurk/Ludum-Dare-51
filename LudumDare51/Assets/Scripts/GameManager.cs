@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
 
     private Queue<Customer> customers;
 
-    // Start is called before the first frame update
     void Start()
     {
         timer = 0f;
@@ -32,21 +31,23 @@ public class GameManager : MonoBehaviour
         _tenSecondsPassed.RemoveListener(SpawnCustomer);
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 10) {
+        if (timer >= 10)
+        {
             timer -= 10;
             _tenSecondsPassed.Invoke();
         }
     }
 
-    private void SpawnCustomer() {
+    private void SpawnCustomer()
+    {
         Customer newCustomer = Instantiate(_customerPrefab, _customerSpawnPoint).GetComponent<Customer>();
         Customer goneCustomer = customers.Count == 3 ? customers.Dequeue() : null;
 
-        foreach (Customer c in customers) {
+        foreach (Customer c in customers)
+        {
             c.status++;
             c.ShowEmoji();
             c.targetPos = _customerTargetPositions[(int)c.status].position;
@@ -54,8 +55,26 @@ public class GameManager : MonoBehaviour
 
         customers.Enqueue(newCustomer);
         newCustomer.targetPos = _customerTargetPositions[0].position;
+        Debug.Log(newCustomer.order);
 
         if (goneCustomer)
             Destroy(goneCustomer.gameObject);
+    }
+
+    public void CheckIfOrderExists()
+    {
+        foreach (Customer c in customers)
+        {
+            if (PlayerInteract.Instance.OrderInHand != null
+                && PlayerInteract.Instance.OrderInHand.Material == c.order.Material
+                && PlayerInteract.Instance.OrderInHand.Neck == c.order.Neck
+                && PlayerInteract.Instance.OrderInHand.Base == c.order.Base)
+            {
+                Destroy(PlayerInteract.Instance.OrderInHand.gameObject);
+                PlayerInteract.Instance.OrderInHand = null;
+
+                Debug.Log("SUCCESSFUL ORDER");
+            }
+        }
     }
 }

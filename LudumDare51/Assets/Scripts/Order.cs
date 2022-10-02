@@ -27,6 +27,7 @@ public class Order : MonoBehaviour
     public bool IsMold() => (_base != 0 && _neck == 0 && _material == 0);
     public bool IsMaterial() => (_base == 0 && _neck == 0 && _material != 0);
     public bool IsNeck() => (_base == 0 && _neck != 0 && _material == 0);
+    public bool IsBase() => (_base != 0 && _neck == 0 && _material != 0);
     public bool IsCompleteItem() => (_base != 0 && _neck != 0 && _material != 0);
 
     [Serializable]
@@ -55,5 +56,19 @@ public class Order : MonoBehaviour
         mat2,
         mat3,
         mat4
+    }
+
+    public override string ToString()
+    {
+        return $"Order: {Base} made with {Material}, and {Neck}";
+    }
+
+    public override bool Equals(object other)
+    {
+        //if (other.GetType() != typeof(Order)) return false;
+
+        Order o = other as Order;
+
+        return (Base == o.Base && Neck == o.Neck && Material == o.Material);
     }
 }

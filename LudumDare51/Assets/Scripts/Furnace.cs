@@ -32,6 +32,9 @@ public class Furnace : MonoBehaviour, InteractableItem
                 isCookin[i] = true;
                 isAnyCookin = true;
             }
+            else {
+                isCookin[i] = false;
+            }
         }
 
         if (isAnyCookin)
@@ -70,6 +73,7 @@ public class Furnace : MonoBehaviour, InteractableItem
                         _moldInserts[i]._completedBase.GetComponent<Rigidbody>().isKinematic = true;
                         _moldInserts[i]._completedBase.Base = _moldInserts[i]._currentMold.Base;
                         _moldInserts[i]._completedBase.Material = _ingotInserts[i]._currentMaterial.Material;
+                        _moldInserts[i]._completedBase.GetComponent<ComplexItemVisual>().UpdateVisuals();
 
                         Destroy(_ingotInserts[i]._currentMaterial.gameObject);
                         _lavaFalls[i].SetActive(false);
