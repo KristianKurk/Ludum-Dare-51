@@ -14,6 +14,8 @@ public class Order : MonoBehaviour
     [SerializeField] private NeckType _neck = 0;
     [SerializeField] private MaterialType _material = 0;
 
+    public InteractableItem OverrideInteractableItem { get; set; } = null;
+
     public void GenerateRandomOrder()
     {
         _base = (BaseType)Random.Range(1, Enum.GetNames(typeof(BaseType)).Length);
@@ -21,9 +23,11 @@ public class Order : MonoBehaviour
         _material = (MaterialType)Random.Range(1, Enum.GetNames(typeof(MaterialType)).Length);
     }
 
-    public bool IsEmpty() {
-        return (_base == 0 && _neck == 0 && _material == 0);
-    }
+    public bool IsEmpty() => (_base == 0 && _neck == 0 && _material == 0);
+    public bool IsMold() => (_base != 0 && _neck == 0 && _material == 0);
+    public bool IsIngot() => (_base == 0 && _neck == 0 && _material != 0);
+    public bool IsNeck() => (_base == 0 && _neck != 0 && _material == 0);
+    public bool IsCompleteItem() => (_base != 0 && _neck != 0 && _material != 0);
 
     [Serializable]
     public enum BaseType

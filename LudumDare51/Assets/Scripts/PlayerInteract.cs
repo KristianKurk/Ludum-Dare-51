@@ -8,7 +8,7 @@ public class PlayerInteract : MonoBehaviour
     public static PlayerInteract Instance { get { return _instance; } }
     private static PlayerInteract _instance;
 
-    public Order OrderInHand => _orderInHand;
+    public Order OrderInHand { get => _orderInHand; set => _orderInHand = value; }
 
     [SerializeField] private Transform _itemInHandPosition;
 
@@ -43,7 +43,10 @@ public class PlayerInteract : MonoBehaviour
             {
                 Order order = target as Order;
 
-                GrabItem(order, ray.direction);
+                if (order.OverrideInteractableItem == null)
+                    GrabItem(order, ray.direction);
+                else
+                    order.OverrideInteractableItem.Interact();
 
             }
             else if (hit.collider.gameObject.TryGetComponent(typeof(InteractableItem), out target))
@@ -63,7 +66,7 @@ public class PlayerInteract : MonoBehaviour
 
     }
 
-    private void TryThrowItemInHand(Vector3 direction)
+    public void TryThrowItemInHand(Vector3 direction)
     {
         if (!_orderInHand || _orderInHand.IsEmpty()) return;
 
