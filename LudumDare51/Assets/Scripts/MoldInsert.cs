@@ -4,10 +4,23 @@ using UnityEngine;
 
 public class MoldInsert : MonoBehaviour, InteractableItem
 {
-    Order _currentMold;
+    public Order _currentMold;
+
+    public Order _completedBase;
+
+    public bool IsInteractable = true;
 
     public void Interact()
     {
+        if (!IsInteractable) return;
+
+        if (_completedBase != null) {
+            PlayerInteract.Instance.GrabItem(_completedBase, Vector3.zero);
+            _completedBase = null;
+            return;
+        }
+
+
         if (PlayerInteract.Instance.OrderInHand != null && PlayerInteract.Instance.OrderInHand.IsMold())
         {
             PlayerInteract.Instance.OrderInHand.OverrideInteractableItem = this;

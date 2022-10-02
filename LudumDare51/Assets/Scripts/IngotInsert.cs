@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class IngotInsert : MonoBehaviour, InteractableItem
 {
-    Order _currentMaterial;
+    public Order _currentMaterial;
+    public bool IsInteractable = true;
 
     public void Interact()
     {
+        if (!IsInteractable) return;
+
         if (PlayerInteract.Instance.OrderInHand != null && PlayerInteract.Instance.OrderInHand.IsMaterial())
         {
             PlayerInteract.Instance.OrderInHand.OverrideInteractableItem = this;
