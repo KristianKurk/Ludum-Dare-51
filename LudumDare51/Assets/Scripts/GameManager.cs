@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
 
         customers.Enqueue(newCustomer);
         newCustomer.targetPos = _customerTargetPositions[0].position;
+        newCustomer.ShowEmoji();
         Debug.Log(newCustomer.order);
 
         if (goneCustomer)

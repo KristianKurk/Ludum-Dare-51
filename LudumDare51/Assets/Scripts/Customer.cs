@@ -11,11 +11,21 @@ public class Customer : MonoBehaviour
 
     public Vector3 targetPos;
 
+    public SpriteRenderer _emoji, _material, _base, _neck;
+
+    [SerializeField] private Sprite[] emojis;
+    [SerializeField] private Sprite[] materials;
+    [SerializeField] private Sprite[] bases;
+    [SerializeField] private Sprite[] necks;
+
     void Awake()
     {
         order = gameObject.AddComponent<Order>();
         order.GenerateRandomOrder();
         GetComponent<Rigidbody>().isKinematic = true;
+        _material.sprite = materials[(int)order.Material-1];
+        _base.sprite = bases[(int)order.Base-1];
+        _neck.sprite = necks[(int)order.Neck-1];
     }
 
     private void Update()
@@ -33,7 +43,7 @@ public class Customer : MonoBehaviour
 
     public void ShowEmoji()
     {
-
+        _emoji.sprite = emojis[(int)status];
     }
 
     public enum Status
