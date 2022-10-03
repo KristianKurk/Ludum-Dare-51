@@ -20,6 +20,7 @@ public class Enchantment : MonoBehaviour, InteractableItem
             _holding.OverrideInteractableItem = null;
             PlayerInteract.Instance.GrabItem(_holding, Vector3.zero);
             _holding = null;
+            GameManager.SpendMoney(50);
         }
     }
 

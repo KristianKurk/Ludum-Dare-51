@@ -11,12 +11,13 @@ public class Customer : MonoBehaviour
 
     public Vector3 targetPos;
 
-    public SpriteRenderer _emoji, _material, _base, _neck;
+    public SpriteRenderer _emoji, _material, _base, _neck, _enchant;
 
     [SerializeField] private Sprite[] emojis;
     [SerializeField] private Sprite[] materials;
     [SerializeField] private Sprite[] bases;
     [SerializeField] private Sprite[] necks;
+    [SerializeField] private Sprite[] enchants;
 
     void Awake()
     {
@@ -26,6 +27,11 @@ public class Customer : MonoBehaviour
         _material.sprite = materials[(int)order.Material-1];
         _base.sprite = bases[(int)order.Base-1];
         _neck.sprite = necks[(int)order.Neck-1];
+        _enchant.sprite = enchants[(int)order.Neck - 1];
+    }
+
+    public void AddEnchantToOrder() {
+        order.Enchant = (Order.EnchantType)Random.Range(1, Enum.GetNames(typeof(Order.EnchantType)).Length);
     }
 
     private void Update()

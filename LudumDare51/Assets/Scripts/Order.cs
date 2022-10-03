@@ -9,10 +9,12 @@ public class Order : MonoBehaviour
     public BaseType Base { get => _base; set => _base = value; }
     public NeckType Neck { get => _neck; set => _neck = value; }
     public MaterialType Material { get => _material; set => _material = value; }
+    public EnchantType Enchant { get => _enchant; set => _enchant = value; }
 
     [SerializeField] private BaseType _base = 0;
     [SerializeField] private NeckType _neck = 0;
     [SerializeField] private MaterialType _material = 0;
+    [SerializeField] private EnchantType _enchant = 0;
 
     public InteractableItem OverrideInteractableItem { get; set; } = null;
 
@@ -60,12 +62,22 @@ public class Order : MonoBehaviour
         mat4
     }
 
+    [Serializable]
+    public enum EnchantType
+    {
+        empty,
+        blue,
+        red,
+        yellow,
+        purple
+    }
+
     public override string ToString()
     {
-        return $"Order: {Base} made with {Material}, and {Neck}";
+        return $"Order: {Base} made with {Material}, and {Neck}, enchanted with {Enchant}";
     }
 
     public int GetCost() {
-        return (10 * (int)Material) + (5 * (int)Base) + (5 * (int)Neck);
+        return (10 * (int)Material) + (5 * (int)Base) + (5 * (int)Neck) + ((Enchant == 0) ? 0 : 50);
     }
 }

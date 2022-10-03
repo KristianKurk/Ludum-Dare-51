@@ -68,6 +68,11 @@ public class GameManager : MonoBehaviour
         _customersCount++;
         _customersServedUI.text = _customersCount + "/50";
 
+        int random = Random.Range(0, 4);
+
+       // if (_customersCount >= 25 && random == 2)
+            newCustomer.AddEnchantToOrder();
+
         customers.Enqueue(newCustomer);
         newCustomer.targetPos = _customerTargetPositions[0].position;
         newCustomer.ShowEmoji();
