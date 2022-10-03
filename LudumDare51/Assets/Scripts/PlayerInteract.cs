@@ -7,7 +7,7 @@ public class PlayerInteract : MonoBehaviour
 {
     public static PlayerInteract Instance { get { return _instance; } }
     private static PlayerInteract _instance;
-
+    public AudioSource pick;
     public Order OrderInHand { get => _orderInHand; set => _orderInHand = value; }
 
     [SerializeField] private Transform _itemInHandPosition;
@@ -44,7 +44,11 @@ public class PlayerInteract : MonoBehaviour
                 Order order = target as Order;
 
                 if (order.OverrideInteractableItem == null)
+                {
                     GrabItem(order, ray.direction);
+                    pick.Play();
+                }
+                    
                 else
                     order.OverrideInteractableItem.Interact();
 

@@ -6,6 +6,7 @@ public class IngotInsert : MonoBehaviour, InteractableItem
 {
     public Order _currentMaterial;
     public bool IsInteractable = true;
+    public AudioSource ingotPlaced;
 
     public void Interact()
     {
@@ -13,6 +14,7 @@ public class IngotInsert : MonoBehaviour, InteractableItem
 
         if (PlayerInteract.Instance.OrderInHand != null && PlayerInteract.Instance.OrderInHand.IsMaterial())
         {
+            ingotPlaced.Play();
             PlayerInteract.Instance.OrderInHand.OverrideInteractableItem = this;
 
             if (_currentMaterial == null)

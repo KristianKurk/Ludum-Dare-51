@@ -20,6 +20,9 @@ public class Furnace : MonoBehaviour, InteractableItem
 
     private const int COOKING_TIME = 5;
 
+    public AudioSource start;
+    public AudioSource done;
+
     public void Interact()
     {
         if (isAnyCookin) return;
@@ -29,6 +32,7 @@ public class Furnace : MonoBehaviour, InteractableItem
         {
             if (_ingotInserts[i]._currentMaterial != null && _moldInserts[i]._currentMold != null)
             {
+                start.Play();
                 _lavaFalls[i].SetActive(true);
                 _moldInserts[i].IsInteractable = false;
                 _ingotInserts[i].IsInteractable = false;
@@ -85,6 +89,7 @@ public class Furnace : MonoBehaviour, InteractableItem
 
                         Destroy(_ingotInserts[i]._currentMaterial.gameObject);
                         _lavaFalls[i].SetActive(false);
+                        done.Play();
                     }
                 }
                 timer = 0f;

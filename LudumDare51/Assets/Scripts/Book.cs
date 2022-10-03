@@ -7,6 +7,7 @@ public class Book : MonoBehaviour
     public int index = 0;
     [SerializeField] private PageFlip leftFlip;
     [SerializeField] private PageFlip rightFlip;
+    public AudioSource flip;
 
     private void OnEnable()
     {
@@ -23,10 +24,16 @@ public class Book : MonoBehaviour
     private void PageClicked(bool isRight)
     {
         int max = leftFlip.spriteList.Length;
-        if (isRight && index < max-1)
+        if (isRight && index < max - 1)
+        {
+            flip.Play();
             index++;
+        } 
         if (!isRight && index > 0)
+        {
+            flip.Play();
             index--;
+        }
 
         leftFlip.visual.sprite = leftFlip.spriteList[index];
         rightFlip.visual.sprite = rightFlip.spriteList[index];

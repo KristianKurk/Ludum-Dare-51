@@ -10,6 +10,7 @@ public class ItemSpawner : MonoBehaviour, InteractableItem
     [SerializeField] private Order.NeckType neckType;
 
     [SerializeField] private GameObject item;
+    public AudioSource pick;
 
     public void Interact()
     {
@@ -35,10 +36,15 @@ public class ItemSpawner : MonoBehaviour, InteractableItem
 
 
             newItem.Material = materialType;
+            pick.Play();
         }
 
         if (neckType != 0)
+        {
             newItem.Neck = neckType;
+            pick.Play();
+        }
+            
 
         if (visualMaterial != null)
             newItem.GetComponent<Renderer>().material = visualMaterial;

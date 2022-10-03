@@ -7,6 +7,8 @@ public class MoldInsert : MonoBehaviour, InteractableItem
     public Order _currentMold;
 
     public Order _completedBase;
+    public AudioSource moldPlaced;
+    public AudioSource basePicked;
 
     public bool IsInteractable = true;
 
@@ -15,6 +17,7 @@ public class MoldInsert : MonoBehaviour, InteractableItem
         if (!IsInteractable) return;
 
         if (_completedBase != null) {
+            basePicked.Play();
             PlayerInteract.Instance.GrabItem(_completedBase, Vector3.zero);
             _completedBase = null;
             return;
@@ -23,6 +26,7 @@ public class MoldInsert : MonoBehaviour, InteractableItem
 
         if (PlayerInteract.Instance.OrderInHand != null && PlayerInteract.Instance.OrderInHand.IsMold())
         {
+            moldPlaced.Play();
             PlayerInteract.Instance.OrderInHand.OverrideInteractableItem = this;
 
             if (_currentMold == null)

@@ -793,6 +793,7 @@ MonoBehaviour:
   index: 0
   leftFlip: {fileID: 1285782353}
   rightFlip: {fileID: 977773164}
+  flip: {fileID: 1568468046}
 --- !u!65 &98627901
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -864,7 +865,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2097279412}
-  - {fileID: 1896059979}
   - {fileID: 1992431610}
   - {fileID: 1083963695}
   - {fileID: 1362041918}
@@ -1098,7 +1098,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 115998264}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &124988851
 AudioSource:
@@ -1429,7 +1429,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 115998264}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &177425576
 AudioSource:
@@ -2110,6 +2110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentMold: {fileID: 0}
   _completedBase: {fileID: 0}
+  moldPlaced: {fileID: 645104384}
+  basePicked: {fileID: 177425576}
   IsInteractable: 1
 --- !u!1 &258695991
 GameObject:
@@ -2510,6 +2512,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 960433345}
     m_Modifications:
+    - target: {fileID: 760027272, guid: 93627a90563fe014da9e2d5a434fb33b, type: 3}
+      propertyPath: craft
+      value: 
+      objectReference: {fileID: 1992431611}
+    - target: {fileID: 760027272, guid: 93627a90563fe014da9e2d5a434fb33b, type: 3}
+      propertyPath: place
+      value: 
+      objectReference: {fileID: 645104384}
     - target: {fileID: 3162533500993304060, guid: 93627a90563fe014da9e2d5a434fb33b, type: 3}
       propertyPath: m_Name
       value: Crafting Bench (2)
@@ -3992,7 +4002,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 115998264}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &599843535
 AudioSource:
@@ -4214,7 +4224,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 115998264}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &645104384
 AudioSource:
@@ -4418,6 +4428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentMaterial: {fileID: 0}
   IsInteractable: 1
+  ingotPlaced: {fileID: 645104384}
 --- !u!1 &684952536
 GameObject:
   m_ObjectHideFlags: 0
@@ -5299,6 +5310,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentMold: {fileID: 0}
   _completedBase: {fileID: 0}
+  moldPlaced: {fileID: 645104384}
+  basePicked: {fileID: 177425576}
   IsInteractable: 1
 --- !u!1 &863641480
 GameObject:
@@ -5409,6 +5422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 245311804}
+  place: {fileID: 645104384}
 --- !u!1 &871446067 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3476764914355390619, guid: 3764a70df68ca934381a803ccae51c02, type: 3}
@@ -5428,6 +5442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentMaterial: {fileID: 0}
   IsInteractable: 1
+  ingotPlaced: {fileID: 645104384}
 --- !u!1 &877898712
 GameObject:
   m_ObjectHideFlags: 0
@@ -5528,6 +5543,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 960433345}
     m_Modifications:
+    - target: {fileID: 760027272, guid: 93627a90563fe014da9e2d5a434fb33b, type: 3}
+      propertyPath: craft
+      value: 
+      objectReference: {fileID: 1992431611}
+    - target: {fileID: 760027272, guid: 93627a90563fe014da9e2d5a434fb33b, type: 3}
+      propertyPath: place
+      value: 
+      objectReference: {fileID: 645104384}
     - target: {fileID: 3162533500993304060, guid: 93627a90563fe014da9e2d5a434fb33b, type: 3}
       propertyPath: m_Name
       value: Crafting Bench (1)
@@ -5862,7 +5885,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 115998264}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &938242172
 AudioSource:
@@ -7339,7 +7362,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 115998264}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1083963696
 AudioSource:
@@ -8124,6 +8147,8 @@ MonoBehaviour:
   - {fileID: 362838942}
   - {fileID: 1957331141}
   book: {fileID: 98627900}
+  place: {fileID: 1362041919}
+  enchant: {fileID: 599843535}
   enchantsClicked: 0
 --- !u!65 &1232076052
 BoxCollider:
@@ -8851,6 +8876,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 960433345}
     m_Modifications:
+    - target: {fileID: 760027272, guid: 93627a90563fe014da9e2d5a434fb33b, type: 3}
+      propertyPath: craft
+      value: 
+      objectReference: {fileID: 1992431611}
+    - target: {fileID: 760027272, guid: 93627a90563fe014da9e2d5a434fb33b, type: 3}
+      propertyPath: place
+      value: 
+      objectReference: {fileID: 645104384}
     - target: {fileID: 3162533500993304060, guid: 93627a90563fe014da9e2d5a434fb33b, type: 3}
       propertyPath: m_Name
       value: Crafting Bench (3)
@@ -9311,7 +9344,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 115998264}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1362041919
 AudioSource:
@@ -9519,6 +9552,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentMold: {fileID: 0}
   _completedBase: {fileID: 0}
+  moldPlaced: {fileID: 645104384}
+  basePicked: {fileID: 177425576}
   IsInteractable: 1
 --- !u!1 &1363152914
 GameObject:
@@ -10265,7 +10300,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 115998264}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1568468046
 AudioSource:
@@ -12100,133 +12135,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882990587}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1896059977
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1896059979}
-  - component: {fileID: 1896059978}
-  m_Layer: 0
-  m_Name: audioSource
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!82 &1896059978
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896059977}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: eb865b6913527f749b1447eef2aa7ad7, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!4 &1896059979
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896059977}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 314.5025, y: -128.31978, z: 3.950531}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 115998264}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1909834667
 Transform:
   m_ObjectHideFlags: 0
@@ -12294,6 +12202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentMaterial: {fileID: 0}
   IsInteractable: 1
+  ingotPlaced: {fileID: 645104384}
 --- !u!1 &1946962503
 GameObject:
   m_ObjectHideFlags: 0
@@ -12701,6 +12610,8 @@ MonoBehaviour:
   _basePrefab: {fileID: 7451760333636510840, guid: 28697da3e5058644db976446f8a4a740, type: 3}
   _fireOn: {fileID: 21300000, guid: 01d987ece08b2ca43a7d444d42b9757a, type: 3}
   _fireOff: {fileID: 21300000, guid: 7ddfa5dd730e4f14985a4d83ba733014, type: 3}
+  start: {fileID: 938242172}
+  done: {fileID: 124988851}
 --- !u!65 &1984387432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12743,7 +12654,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 115998264}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1992431611
 AudioSource:
@@ -12756,10 +12667,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: afd02397b5934bb48acb4b337bd8fe48, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -13855,7 +13766,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 115998264}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2105317643
 AudioSource:
@@ -14087,6 +13998,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 960433345}
     m_Modifications:
+    - target: {fileID: 760027272, guid: 93627a90563fe014da9e2d5a434fb33b, type: 3}
+      propertyPath: craft
+      value: 
+      objectReference: {fileID: 1992431611}
+    - target: {fileID: 760027272, guid: 93627a90563fe014da9e2d5a434fb33b, type: 3}
+      propertyPath: place
+      value: 
+      objectReference: {fileID: 645104384}
     - target: {fileID: 3162533500993304060, guid: 93627a90563fe014da9e2d5a434fb33b, type: 3}
       propertyPath: m_Name
       value: Crafting Bench

@@ -8,7 +8,8 @@ public class Enchantment : MonoBehaviour, InteractableItem
     [SerializeField] private Transform targetPos;
     [SerializeField] private List<Transform> enchants;
     [SerializeField] private Book book;
-
+    public AudioSource place;
+    public AudioSource enchant;
     public int enchantsClicked = 0;
 
     public void Update()
@@ -23,6 +24,7 @@ public class Enchantment : MonoBehaviour, InteractableItem
             PlayerInteract.Instance.GrabItem(_holding, Vector3.zero);
             _holding = null;
             GameManager.SpendMoney(50);
+            enchant.Play();
         }
     }
 
@@ -30,6 +32,7 @@ public class Enchantment : MonoBehaviour, InteractableItem
     {
         if (PlayerInteract.Instance.OrderInHand != null && (PlayerInteract.Instance.OrderInHand.IsCompleteItem()))
         {
+            place.Play();
             PlayerInteract.Instance.OrderInHand.OverrideInteractableItem = this;
             enchantsClicked = 0;
 
@@ -37,12 +40,13 @@ public class Enchantment : MonoBehaviour, InteractableItem
                 child.gameObject.SetActive(true);
 
             enchants[book.index].gameObject.SetActive(true);
-
+            
             if (_holding == null)
             {
                 _holding = PlayerInteract.Instance.OrderInHand;
                 SetCurrentItemToOrderInHand();
                 PlayerInteract.Instance.OrderInHand = null;
+                
             }
             else
             {
@@ -50,6 +54,7 @@ public class Enchantment : MonoBehaviour, InteractableItem
                 SetCurrentItemToOrderInHand();
                 _item.OverrideInteractableItem = null;
                 PlayerInteract.Instance.GrabItem(_item, Vector3.zero);
+                
             }
         }
         else

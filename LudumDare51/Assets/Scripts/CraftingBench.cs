@@ -5,12 +5,16 @@ using UnityEngine;
 public class CraftingBench : MonoBehaviour, InteractableItem
 {
     private Order _holding;
+    public AudioSource craft;
+    public AudioSource place;
+
     [SerializeField] private GameObject complexItem;
 
     public void Interact()
     {
         if (PlayerInteract.Instance.OrderInHand != null && (PlayerInteract.Instance.OrderInHand.IsNeck() || PlayerInteract.Instance.OrderInHand.IsBase()))
         {
+            place.Play();
             PlayerInteract.Instance.OrderInHand.OverrideInteractableItem = this;
 
             if (_holding == null)
@@ -23,6 +27,7 @@ public class CraftingBench : MonoBehaviour, InteractableItem
             {
                 if ((_holding.IsNeck() && PlayerInteract.Instance.OrderInHand.IsNeck()) || (_holding.IsBase() && PlayerInteract.Instance.OrderInHand.IsBase()))
                 {
+                    place.Play();
                     Order _oldNeck = _holding;
                     SetCurrentItemToOrderInHand();
                     _oldNeck.OverrideInteractableItem = null;
@@ -43,7 +48,7 @@ public class CraftingBench : MonoBehaviour, InteractableItem
                         o.Neck = PlayerInteract.Instance.OrderInHand.Neck;
                         o.Material = _holding.Material;
                     }
-
+                    craft.Play();
                     Destroy(PlayerInteract.Instance.OrderInHand.gameObject);
                     PlayerInteract.Instance.OrderInHand = null;
                     o.GetComponent<ComplexItemVisual>().UpdateVisuals();
