@@ -18,6 +18,8 @@ public class Enchantment : MonoBehaviour, InteractableItem
             enchants[book.index].gameObject.SetActive(false);
             enchantsClicked = 0;
             _holding.OverrideInteractableItem = null;
+            _holding.Enchant = (Order.EnchantType)book.index;
+            _holding.GetComponent<ComplexItemVisual>().UpdateVisuals();
             PlayerInteract.Instance.GrabItem(_holding, Vector3.zero);
             _holding = null;
             GameManager.SpendMoney(50);
@@ -65,6 +67,6 @@ public class Enchantment : MonoBehaviour, InteractableItem
     {
         PlayerInteract.Instance.OrderInHand.transform.parent = null;
         PlayerInteract.Instance.OrderInHand.transform.position = targetPos.position;
-        PlayerInteract.Instance.OrderInHand.transform.rotation = Quaternion.Euler(0,0,90);
+        PlayerInteract.Instance.OrderInHand.transform.rotation = Quaternion.Euler(0, 0, 90);
     }
 }

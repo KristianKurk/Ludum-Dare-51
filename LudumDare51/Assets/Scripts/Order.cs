@@ -38,8 +38,7 @@ public class Order : MonoBehaviour
         empty,
         base1,
         base2,
-        base3,
-        base4
+        base3
     }
 
     [Serializable]
@@ -48,8 +47,7 @@ public class Order : MonoBehaviour
         empty,
         neck1,
         neck2,
-        neck3,
-        neck4
+        neck3
     }
 
     [Serializable]
