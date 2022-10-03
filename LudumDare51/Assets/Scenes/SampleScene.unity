@@ -5943,6 +5943,7 @@ MonoBehaviour:
   - {fileID: 465201427}
   _moneyUI: {fileID: 2035723899}
   _customersServedUI: {fileID: 230805861}
+  _gameOverText: {fileID: 0}
 --- !u!4 &1044997993
 Transform:
   m_ObjectHideFlags: 0
