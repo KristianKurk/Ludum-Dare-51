@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private static int money;
     [SerializeField] private TMP_Text _moneyUI;
     [SerializeField] private TMP_Text _customersServedUI;
-
+    [SerializeField] private TMP_Text _gameOverText;
 
     void Start()
     {
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         customers = new Queue<Customer>();
         money = 100;
     }
-    
+
     private void OnEnable()
     {
         _tenSecondsPassed.AddListener(SpawnCustomer);
@@ -41,10 +41,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 10)
+        if (timer >= 3)
         {
-            
-            timer -= 10;
+
+            timer -= 3;
             _tenSecondsPassed.Invoke();
         }
         _moneyUI.text = money.ToString();
@@ -72,8 +72,37 @@ public class GameManager : MonoBehaviour
 
         int random = Random.Range(0, 4);
 
-       // if (_customersCount >= 25 && random == 2)
+        if (_customersCount >= 25 && random == 2)
             newCustomer.AddEnchantToOrder();
+
+        if (_customersCount % 10 == 0 && _customersCount <= 50)
+        {
+            if (_customersCount != 50)
+            {
+                _gameOverText.color = Color.red;
+                _gameOverText.text = "Rent ($150) is due! Pay up!";
+                SpendMoney(150);
+                if (money < 0)
+                    _gameOverText.text += "\nYou ended up in debt, watch out!";
+            }
+            else
+            {
+                if (money > 0)
+                {
+                    _gameOverText.color = Color.green;
+                    _gameOverText.text = "Congrats, you won!\nFeel free to keep playing in freeplay mode.";
+                }
+                else
+                {
+                    _gameOverText.color = Color.red;
+                    _gameOverText.text = "Game Over, you lose!\nTry not to end in debt!";
+                }
+            }
+
+        }
+        else {
+            _gameOverText.text = string.Empty;
+        }
 
         customers.Enqueue(newCustomer);
         newCustomer.targetPos = _customerTargetPositions[0].position;

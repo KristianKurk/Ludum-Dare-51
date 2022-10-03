@@ -27,7 +27,11 @@ public class Customer : MonoBehaviour
         _material.color = materials[(int)order.Material-1];
         _base.sprite = bases[(int)order.Base-1];
         _neck.sprite = necks[(int)order.Neck-1];
-        _enchant.sprite = enchants[(int)order.Neck - 1];
+
+        if (order.Enchant != Order.EnchantType.empty)
+            _enchant.sprite = enchants[(int)order.Enchant - 1];
+        else
+            _enchant.sprite = null;
     }
 
     public void AddEnchantToOrder() {
