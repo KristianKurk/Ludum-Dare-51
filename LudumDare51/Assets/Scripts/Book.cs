@@ -4,22 +4,31 @@ using UnityEngine;
 
 public class Book : MonoBehaviour
 {
-    public int index;
+    public int index = 0;
+    [SerializeField] private PageFlip leftFlip;
+    [SerializeField] private PageFlip rightFlip;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        Book book = GetComponentInChildren<RightPage>().GetComponent<PageFlip>(); 
-        book.OnPageFlip += Testing_OnPageFlip;
+        leftFlip.OnPageFlip.AddListener(() => PageClicked(false));
+        rightFlip.OnPageFlip.AddListener(() => PageClicked(true));
+    }
 
-    }
-    private void Testing_OnPageFlip(object sender, EventArgs e)
+    private void OnDisable()
     {
-        Debug.Log("Worky?");
+        leftFlip.OnPageFlip.RemoveAllListeners();
+        rightFlip.OnPageFlip.RemoveAllListeners();
     }
-// Update is called once per frame
-void Update()
+
+    private void PageClicked(bool isRight)
     {
-        
+        int max = leftFlip.spriteList.Length;
+        if (isRight && index < max-1)
+            index++;
+        if (!isRight && index > 0)
+            index--;
+
+        leftFlip.visual.sprite = leftFlip.spriteList[index];
+        rightFlip.visual.sprite = rightFlip.spriteList[index];
     }
 }
