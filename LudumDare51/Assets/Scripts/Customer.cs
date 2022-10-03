@@ -48,6 +48,7 @@ public class Customer : MonoBehaviour
 
     public enum Status
     {
+        NewlyArrived,
         Happy,
         Neutral,
         Angry

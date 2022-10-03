@@ -16,8 +16,10 @@ public class GameManager : MonoBehaviour
     private float timer;
 
     private Queue<Customer> customers;
+    private int _customersCount = 0;
     private static int money;
     [SerializeField] private TMP_Text _moneyUI;
+    [SerializeField] private TMP_Text _customersServedUI;
 
     void Start()
     {
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
     private void SpawnCustomer()
     {
         Customer newCustomer = Instantiate(_customerPrefab, _customerSpawnPoint).GetComponent<Customer>();
-        Customer goneCustomer = customers.Count == 3 ? customers.Dequeue() : null;
+        Customer goneCustomer = customers.Count == 4 ? customers.Dequeue() : null;
 
         foreach (Customer c in customers)
         {
@@ -62,6 +64,9 @@ public class GameManager : MonoBehaviour
             c.ShowEmoji();
             c.targetPos = _customerTargetPositions[(int)c.status].position;
         }
+
+        _customersCount++;
+        _customersServedUI.text = _customersCount + "/50";
 
         customers.Enqueue(newCustomer);
         newCustomer.targetPos = _customerTargetPositions[0].position;
@@ -83,6 +88,7 @@ public class GameManager : MonoBehaviour
             {
                 switch (c.status)
                 {
+                    case Customer.Status.NewlyArrived:
                     case Customer.Status.Happy:
                         money += 2 * PlayerInteract.Instance.OrderInHand.GetCost();
                         break;
@@ -93,6 +99,12 @@ public class GameManager : MonoBehaviour
                         money += 1 * PlayerInteract.Instance.OrderInHand.GetCost();
                         break;
                 }
+
+                c._emoji.enabled = false;
+                c._neck.enabled = false;
+                c._base.enabled = false;
+                c._material.enabled = false;
+                c.GetComponent<SpriteRenderer>().enabled = false;
 
                 Destroy(PlayerInteract.Instance.OrderInHand.gameObject);
                 PlayerInteract.Instance.OrderInHand = null;

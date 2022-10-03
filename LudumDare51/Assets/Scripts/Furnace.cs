@@ -8,8 +8,11 @@ public class Furnace : MonoBehaviour, InteractableItem
     [SerializeField] private MoldInsert[] _moldInserts;
 
     [SerializeField] private GameObject[] _lavaFalls;
-    [SerializeField] private GameObject _hearth;
+    [SerializeField] private SpriteRenderer _hearth;
     [SerializeField] private GameObject _basePrefab;
+
+    [SerializeField] private Sprite _fireOn;
+    [SerializeField] private Sprite _fireOff;
 
     private float timer;
     private bool[] isCookin = new bool[3];
@@ -39,7 +42,7 @@ public class Furnace : MonoBehaviour, InteractableItem
 
         if (isAnyCookin)
         {
-            _hearth.SetActive(true);
+            _hearth.sprite = _fireOn;
             this.transform.localRotation = Quaternion.Euler(-120,0,0);
         }
     }
@@ -49,6 +52,8 @@ public class Furnace : MonoBehaviour, InteractableItem
         timer = 0f;
         for (int i = 0; i < 3; i++)
             _lavaFalls[i].SetActive(false);
+
+        _hearth.sprite = _fireOff;
     }
 
     void Update()
@@ -85,7 +90,7 @@ public class Furnace : MonoBehaviour, InteractableItem
                 timer = 0f;
                 isAnyCookin = false;
                 this.transform.localRotation = Quaternion.Euler(-40, 0, 0);
-                _hearth.SetActive(false);
+                _hearth.sprite = _fireOff;
             }
         }
     }
