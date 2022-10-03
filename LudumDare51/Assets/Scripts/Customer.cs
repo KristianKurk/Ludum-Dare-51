@@ -14,7 +14,7 @@ public class Customer : MonoBehaviour
     public SpriteRenderer _emoji, _material, _base, _neck, _enchant;
 
     [SerializeField] private Sprite[] emojis;
-    [SerializeField] private Sprite[] materials;
+    [SerializeField] private Color[] materials;
     [SerializeField] private Sprite[] bases;
     [SerializeField] private Sprite[] necks;
     [SerializeField] private Sprite[] enchants;
@@ -24,7 +24,7 @@ public class Customer : MonoBehaviour
         order = gameObject.AddComponent<Order>();
         order.GenerateRandomOrder();
         GetComponent<Rigidbody>().isKinematic = true;
-        _material.sprite = materials[(int)order.Material-1];
+        _material.color = materials[(int)order.Material-1];
         _base.sprite = bases[(int)order.Base-1];
         _neck.sprite = necks[(int)order.Neck-1];
         _enchant.sprite = enchants[(int)order.Neck - 1];

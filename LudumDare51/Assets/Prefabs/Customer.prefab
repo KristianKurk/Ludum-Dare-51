@@ -247,30 +247,28 @@ MonoBehaviour:
   _neck: {fileID: 515282572006494640}
   _enchant: {fileID: 3116043928396148770}
   emojis:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 4ce067b0dac32684b86a5c53421ab681, type: 3}
+  - {fileID: 21300000, guid: 4ce067b0dac32684b86a5c53421ab681, type: 3}
+  - {fileID: 21300000, guid: 9ed2c30fb53e4db4495b04b3b24d47ec, type: 3}
+  - {fileID: 21300000, guid: 61742ff37d0f3484dad295eb5898c1bd, type: 3}
   materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {r: 0.54509807, g: 0.27058825, b: 0.07450981, a: 1}
+  - {r: 0.12941177, g: 0.12941177, b: 0.12941177, a: 1}
+  - {r: 0.92156863, g: 0.84313726, b: 0, a: 1}
+  - {r: 0.7529412, g: 0.7529412, b: 0.7529412, a: 1}
   bases:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 059485885566cff4aa4ca3def26adb26, type: 3}
+  - {fileID: 21300000, guid: 39ccee8a8724efe478e143de8ab5d8e7, type: 3}
+  - {fileID: 21300000, guid: 4210ab48919f34741bbec2f1c84dfcb6, type: 3}
   necks:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 57886e25a4366124e9f1765bd6314a33, type: 3}
+  - {fileID: 21300000, guid: d54a355c0bd48e641b245f71742dc8bc, type: 3}
+  - {fileID: 21300000, guid: ade1f005906b9764891b1cec5b3e9683, type: 3}
   enchants:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 8df065a7d0924e44780ce1352b11ef6d, type: 3}
+  - {fileID: 21300000, guid: b8854d37e09556d44ba19b6ff82fb96b, type: 3}
+  - {fileID: 21300000, guid: 52ac1b8f31e6b0345b942b0cf05a086e, type: 3}
+  - {fileID: 21300000, guid: 395dc0f8ac45b554a99a6ed9157b5deb, type: 3}
 --- !u!212 &17832710734403007
 SpriteRenderer:
   m_ObjectHideFlags: 0
