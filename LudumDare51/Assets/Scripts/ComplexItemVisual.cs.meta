@@ -3,7 +3,27 @@ guid: ed97e33a1e82de64d94d726a8e063cc5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - neck: {instanceID: 0}
+  - neck1: {instanceID: 0}
+  - neck2: {instanceID: 0}
+  - base1: {instanceID: 0}
+  - base2: {instanceID: 0}
+  - base1Sprites_bronze: {instanceID: 0}
+  - base1Sprites_ebony: {instanceID: 0}
+  - base1Sprites_gold: {fileID: 21300000, guid: f86d903797842444294a5015e0411a21, type: 3}
+  - base1Sprites_silver: {fileID: 21300000, guid: 059485885566cff4aa4ca3def26adb26, type: 3}
+  - base2Sprites_bronze: {fileID: 21300000, guid: 05efbc0d8eb081e45bf242ea3919b9c6, type: 3}
+  - base2Sprites_ebony: {fileID: 21300000, guid: c69beeefcf17eee4f80fea0eee78974e, type: 3}
+  - base2Sprites_gold: {fileID: 21300000, guid: 37ba8cbb7ab05dd46b189d279d77f615, type: 3}
+  - base2Sprites_silver: {fileID: 21300000, guid: 39ccee8a8724efe478e143de8ab5d8e7, type: 3}
+  - base3Sprites_bronze: {fileID: 21300000, guid: 91a137068d51048438aaabd93edede6b, type: 3}
+  - base3Sprites_ebony: {fileID: 21300000, guid: 80a18aedb2af198468acd294b03b5216, type: 3}
+  - base3Sprites_gold: {fileID: 21300000, guid: ed87e6fd8f9040c4bb370428de6f48d2, type: 3}
+  - base3Sprites_silver: {fileID: 21300000, guid: 4210ab48919f34741bbec2f1c84dfcb6, type: 3}
+  - neckSprites1: {fileID: 21300000, guid: 57886e25a4366124e9f1765bd6314a33, type: 3}
+  - neckSprites2: {fileID: 21300000, guid: d54a355c0bd48e641b245f71742dc8bc, type: 3}
+  - neckSprites3: {fileID: 21300000, guid: ade1f005906b9764891b1cec5b3e9683, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

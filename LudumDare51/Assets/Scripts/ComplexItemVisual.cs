@@ -9,8 +9,8 @@ public class ComplexItemVisual : MonoBehaviour
     [SerializeField] SpriteRenderer neck1, neck2;
     [SerializeField] SpriteRenderer base1, base2;
 
-    [SerializeField] Sprite baseSprites;
-    [SerializeField] Sprite neckSprites;
+    [SerializeField] Sprite[] baseSprites;
+    [SerializeField] Sprite[] neckSprites;
 
     public void UpdateVisuals()
     {
@@ -27,12 +27,20 @@ public class ComplexItemVisual : MonoBehaviour
                 switch (o.Material)
                 {
                     case Order.MaterialType.mat1:
+                        base1.sprite = baseSprites[0];
+                        base2.sprite = baseSprites[0];
                         break;
                     case Order.MaterialType.mat2:
+                        base1.sprite = baseSprites[3];
+                        base2.sprite = baseSprites[3];
                         break;
                     case Order.MaterialType.mat3:
+                        base1.sprite = baseSprites[6];
+                        base2.sprite = baseSprites[6];
                         break;
                     case Order.MaterialType.mat4:
+                        base1.sprite = baseSprites[9];
+                        base2.sprite = baseSprites[9];
                         break;
                 }
                 break;
@@ -40,12 +48,20 @@ public class ComplexItemVisual : MonoBehaviour
                 switch (o.Material)
                 {
                     case Order.MaterialType.mat1:
+                        base1.sprite = baseSprites[1];
+                        base2.sprite = baseSprites[1];
                         break;
                     case Order.MaterialType.mat2:
+                        base1.sprite = baseSprites[4];
+                        base2.sprite = baseSprites[4];
                         break;
                     case Order.MaterialType.mat3:
+                        base1.sprite = baseSprites[7];
+                        base2.sprite = baseSprites[7];
                         break;
                     case Order.MaterialType.mat4:
+                        base1.sprite = baseSprites[10];
+                        base2.sprite = baseSprites[10];
                         break;
                 }
                 break;
@@ -53,12 +69,20 @@ public class ComplexItemVisual : MonoBehaviour
                 switch (o.Material)
                 {
                     case Order.MaterialType.mat1:
+                        base1.sprite = baseSprites[2];
+                        base2.sprite = baseSprites[2];
                         break;
                     case Order.MaterialType.mat2:
+                        base1.sprite = baseSprites[5];
+                        base2.sprite = baseSprites[5];
                         break;
                     case Order.MaterialType.mat3:
+                        base1.sprite = baseSprites[8];
+                        base2.sprite = baseSprites[8];
                         break;
                     case Order.MaterialType.mat4:
+                        base1.sprite = baseSprites[11];
+                        base2.sprite = baseSprites[11];
                         break;
                 }
                 break;
@@ -68,10 +92,16 @@ public class ComplexItemVisual : MonoBehaviour
         switch (o.Neck)
         {
             case Order.NeckType.neck1:
+                neck1.sprite = neckSprites[0];
+                neck2.sprite = neckSprites[0];
                 break;
             case Order.NeckType.neck2:
+                neck1.sprite = neckSprites[1];
+                neck2.sprite = neckSprites[1];
                 break;
             case Order.NeckType.neck3:
+                neck1.sprite = neckSprites[2];
+                neck2.sprite = neckSprites[2];
                 break;
         }
     }

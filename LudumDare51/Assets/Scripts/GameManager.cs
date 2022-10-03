@@ -21,13 +21,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text _moneyUI;
     [SerializeField] private TMP_Text _customersServedUI;
 
+
     void Start()
     {
         timer = 0f;
         customers = new Queue<Customer>();
         money = 100;
     }
-
+    
     private void OnEnable()
     {
         _tenSecondsPassed.AddListener(SpawnCustomer);
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= 10)
         {
+            
             timer -= 10;
             _tenSecondsPassed.Invoke();
         }
